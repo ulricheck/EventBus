@@ -91,9 +91,11 @@ if(ENABLE_PERFORMANCE)
 	add_subdirectory(performance/)
 endif()
 
+if(CMAKE_COMPILER_IS_GNUCXX)
 target_compile_options(EventBus PUBLIC
 	-Wall -pedantic
 	-Wnon-virtual-dtor
 	-Werror
 	-Wno-error=deprecated-declarations
 	)
+endif(CMAKE_COMPILER_IS_GNUCXX)
