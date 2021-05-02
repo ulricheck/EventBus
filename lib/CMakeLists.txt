@@ -19,6 +19,7 @@ project(EventBus
 include(GNUInstallDirs)
 include(cmake/InstallHelp.cmake)
 
+configure_file(${PROJECT_SOURCE_DIR}/src/dexode/config.h.in ${CMAKE_BINARY_DIR}/include/dexode/config.h @ONLY)
 
 # Layout. This works for all platforms:
 #   * <prefix>/lib*/cmake/<PROJECT-NAME>
@@ -26,7 +27,9 @@ include(cmake/InstallHelp.cmake)
 #   * <prefix>/include/
 set(config_install_dir "${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}")
 
+
 set(EventBus_PUBLIC_HEADERS
+	${CMAKE_BINARY_DIR}/include/dexode/config.h
 	src/dexode/EventBus.hpp
 	src/dexode/eventbus/Bus.hpp
 	src/dexode/eventbus/internal/event_id.hpp
@@ -67,8 +70,15 @@ set_target_properties(EventBus PROPERTIES
 
 target_compile_features(EventBus PUBLIC cxx_std_17)
 
+if(NOT EVENTBUS_BUILD_STATIC)
+    target_compile_definitions(EventBus PRIVATE "EVENTBUS_EXPORTS")
+endif()
+
+
+
 target_include_directories(EventBus PUBLIC
 	$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src/>
+	$<BUILD_INTERFACE:${CMAKE_BINARY_DIR}/include>
 	$<INSTALL_INTERFACE:include/>
 	)
 
