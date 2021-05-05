@@ -111,7 +111,7 @@ install(TARGETS EventBus
 	RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}"
 	INCLUDES DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}"
 	)
-install(FILES ${PROJECT_BINARY_DIR}/include/dexode/config.h DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/dexode)
+install(FILES ${CMAKE_BINARY_DIR}/include/dexode/config.h DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/dexode)
 
 # Include module with fuction 'write_basic_package_version_file'
 include(CMakePackageConfigHelpers)
