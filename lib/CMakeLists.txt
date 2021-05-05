@@ -80,6 +80,8 @@ target_include_directories(EventBus PUBLIC
 	$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src/>
 	$<BUILD_INTERFACE:${CMAKE_BINARY_DIR}/include>
 	$<INSTALL_INTERFACE:include/>
+	PRIVATE
+        ${CMAKE_BINARY_DIR}/include
 	)
 
 # Add definitions for targets
