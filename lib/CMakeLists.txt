@@ -29,7 +29,6 @@ set(config_install_dir "${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}")
 
 
 set(EventBus_PUBLIC_HEADERS
-	${CMAKE_BINARY_DIR}/include/dexode/config.h
         src/dexode/visibility.h
 	src/dexode/EventBus.hpp
 	src/dexode/eventbus/Bus.hpp
@@ -50,6 +49,7 @@ set(EventBus_PUBLIC_HEADERS
 # Library definition
 add_library(EventBus
 	${EventBus_PUBLIC_HEADERS}
+	${CMAKE_BINARY_DIR}/include/dexode/config.h
 	src/dexode/EventBus.cpp
 	src/dexode/eventbus/perk/PassPerk.cpp
 	src/dexode/eventbus/perk/Perk.cpp
